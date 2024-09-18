@@ -1,0 +1,12 @@
+[
+  {
+    $match: {
+      "company.phone": {
+        $regex: /^\+1 \(940\)/
+      }
+    }
+  },
+  {
+    $count: "Users With Special Phone Number"
+  }
+]

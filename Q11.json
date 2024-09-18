@@ -1,0 +1,15 @@
+[
+  {
+    $sort: {
+      registered: -1
+    }
+  },{
+    $limit: 10
+  },{
+    $project: {
+      name:1,
+      registered:1,
+      favoriteFruit:1
+    }
+  }
+]

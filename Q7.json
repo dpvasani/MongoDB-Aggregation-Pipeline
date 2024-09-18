@@ -1,0 +1,42 @@
+[
+  {
+    $unwind: {
+      path: "$tags",
+    }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      numberOfTags:{
+        $sum:1
+      }
+    }
+  },{
+    $group: {
+      _id: null,
+      averageNumberOfTags :{
+        $avg:"$numberOfTags"
+      }
+    }
+  }
+]
+
+[
+  {
+    $addFields: {
+      numberOfField: {
+        $size: {
+          $ifNull: ["$tags", []]
+        }
+      }
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      averageNumberOfTags: {
+        $avg: "$numberOfField"
+      }
+    }
+  }
+]

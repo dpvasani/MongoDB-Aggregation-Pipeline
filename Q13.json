@@ -1,0 +1,9 @@
+[
+  {
+    $match: {
+      "tags.1":"ad"
+    },
+  },{
+    $count: 'Second Tag Has ad'
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+   $group: {
+     _id: "$favoriteFruit",
+     count:{
+       $sum:1
+     }
+   } 
+  },
+  {
+  // Field Name: SortOrder
+    $sort:{
+      count:-1
+    }
+  },
+  {
+    $limit: 2
+  }
+]
